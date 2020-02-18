@@ -1,0 +1,34 @@
+<idea-plugin>
+  <id>org.andrew.plugin</id>
+  <name>butterknife_plugin</name>
+  <version>1.0</version>
+  <vendor email="hanbingran1@163.com" url="">yyh</vendor>
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+  <actions>
+    <action id="AddInjectionsAction"
+            class="org.andrew.plugin.InjectAction"
+            text="ButterKnife自动注入View"
+            description="根据选中的资源文件xml（来自Activity、Fragment、Adapter）自动生成子View">
+
+      <keyboard-shortcut
+              keymap="$default"
+              first-keystroke="shift control B"/>
+      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+      <!-- <add-to-group group-id="ProjectViewPopupMenu" /> file pop-up -->
+    </action>
+  </actions>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationConfigurable instance="org.andrew.plugin.Settings" />
+    <codeInsight.lineMarkerProvider language="JAVA"
+                                    implementationClass="org.andrew.plugin.navigation.NavigationMarkerProvider" />
+  </extensions>
+
+</idea-plugin>
